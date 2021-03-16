@@ -5,10 +5,10 @@ namespace AdventOfCode2017.util
     public class Node
     {
         
-        public string Name { get; set; }
-        public int Weight { get; set; }
-        public List<Node> Children { get; set; }
-        public Node Parent { get; set; }
+        public string Name { get; }
+        public int Weight { get; }
+        public List<Node> Children { get; }
+        private Node Parent { get; }
         public int SumWeight { get; set; }
 
         public Node(string name, int weight,  List<Node> children)
