@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace AdventOfCode2017.days
 {
-    internal class Day6 : Day
+    internal class Day06 : Day
     {
         private int[] MemoryBank { get; set; }
-        public Day6(bool part1) : base(part1)
+        public Day06(bool part1) : base(part1)
         {
             Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input6.txt");
+                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input06.txt");
             MemoryBank = Array.ConvertAll(Input.Split("\t"), int.Parse);
         }
 

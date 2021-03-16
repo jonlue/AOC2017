@@ -1,14 +1,13 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace AdventOfCode2017.days
 {
-    internal class Day9 : Day
+    internal class Day09 : Day
     {
-        public Day9(bool part1) : base(part1)
+        public Day09(bool part1) : base(part1)
         {
             Input = File.ReadAllText(
-                "C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input9.txt");
+                "C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input09.txt");
         }
 
         protected override string Solve1()

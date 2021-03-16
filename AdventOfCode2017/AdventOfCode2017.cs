@@ -41,15 +41,16 @@ namespace AdventOfCode2017
         {
             Day day = exercise switch
             {
-                (1) => new Day1(part),
-                (2) => new Day2(part),
-                (3) => new Day3(part),
-                (4) => new Day4(part),
-                (5) => new Day5(part),
-                (6) => new Day6(part),
-                (7) => new Day7(part),
-                (8) => new Day8(part),
-                (9) => new Day9(part),
+                (1)  => new Day01(part),
+                (2)  => new Day02(part),
+                (3)  => new Day03(part),
+                (4)  => new Day04(part),
+                (5)  => new Day05(part),
+                (6)  => new Day06(part),
+                (7)  => new Day07(part),
+                (8)  => new Day08(part),
+                (9)  => new Day09(part),
+                (10) => new Day10(part),
                 _ => null
             };
             return day;

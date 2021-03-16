@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace AdventOfCode2017.days
 {
-    internal class Day1 : Day
+    internal class Day01 : Day
     {
         public Day1(bool part1) : base(part1)
         {
-            Input = File.ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input1.txt");
+            Input = File.ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input01.txt");
         }
     
 

@@ -5,16 +5,16 @@ using System.Linq;
 
 namespace AdventOfCode2017.days
 {
-    internal class Day8 : Day
+    internal class Day08 : Day
     {
         private string[] Instructions { get; }
         private Dictionary<string, int> Registers { get; }
         private int MaxValueInRegister { get; set; }
 
-        public Day8(bool part1) : base(part1)
+        public Day08(bool part1) : base(part1)
         {
             Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input8.txt")
+                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input08.txt")
                 .Replace("\r", "");
             Instructions = Input.Split("\n");
             Registers = new Dictionary<string, int>();

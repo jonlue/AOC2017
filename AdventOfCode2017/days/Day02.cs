@@ -3,7 +3,7 @@ using System.IO;
 
 namespace AdventOfCode2017.days
 {
-    internal class Day2 : Day
+    internal class Day02 : Day
     {
         public Day2(bool part1) : base(part1)
         {
