@@ -49,6 +49,7 @@ namespace AdventOfCode2017
                 (6) => new Day6(part),
                 (7) => new Day7(part),
                 (8) => new Day8(part),
+                (9) => new Day9(part),
                 _ => null
             };
             return day;
