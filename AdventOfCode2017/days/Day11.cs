@@ -14,12 +14,10 @@ namespace AdventOfCode2017.days
         private const string SE = "se";
         private const string No = "n";
         private const string So = "s";
-        public int[,] HexGrid { get; set; }
         public Day11(bool part1) : base(part1)
         {
             Input = File
                 .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input11.txt");
-            HexGrid = new int[500, 500];
         }
 
         protected override string Solve1()
