@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -44,8 +45,8 @@ namespace AdventOfCode2017.days
         protected override string Solve2()
         {
             var pairs = 0;
-            var queueA = new ConcurrentQueue<long>();
-            var queueB = new ConcurrentQueue<long>();
+            var queueA = new Queue<long>();//new ConcurrentQueue<long>();
+            var queueB = new Queue<long>();//new ConcurrentQueue<long>();
             var genA = new Thread(() => GeneratorThread(GeneratorA, GeneratorAFactor, queueA, 4));
             var genB = new Thread(() => GeneratorThread(GeneratorB, GeneratorBFactor, queueB, 8));
             
@@ -78,7 +79,7 @@ namespace AdventOfCode2017.days
             return pairs.ToString();
         }
 
-        private static void GeneratorThread(long value, long factor, ConcurrentQueue<long> q, int limit)
+        private static void GeneratorThread(long value, long factor, Queue<long> q, int limit)
         {
             for (var i = 0; i < 5000000; i++)
             {
