@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using AdventOfCode2017.util;
 
 namespace AdventOfCode2017.days
@@ -21,20 +18,14 @@ namespace AdventOfCode2017.days
         protected override string Solve1()
         {
             KnotHash = new KnotHash(Input, false);
-            KnotHash.RunHash();
+            KnotHash.RunHash(1);
             return (KnotHash.Knots[0] * KnotHash.Knots[1]).ToString();
         }
 
         protected override string Solve2()
         {
-            KnotHash = new KnotHash(Input, true);
-
-            for (var i = 0; i < 64; i++)
-            {
-                KnotHash.RunHash();
-            }
-
-            KnotHash.GenerateHash("X");
+            KnotHash = new KnotHash(Input);
+            KnotHash.RunHash();
             return KnotHash.Hash;
         }
 

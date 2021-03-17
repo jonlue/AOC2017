@@ -8,35 +8,34 @@ namespace AdventOfCode2017.util
     {
         private int Position { get; set; }
         private int SkipSize { get; set; }
-        private string Input { get; }
+        public string Input { get; set; }
+        private int[] ConvertedInput { get; set; }
         public string Hash { get; private set; }
+        private bool Conversion { get; }
         public List<int> Knots { get; private set; }
-        
+        public int FormatBase { get; set; }
+
         private const string EndLengths = "17,31,73,47,23";
         private const int Length = 256;
         private const int HashLength = 16;
 
-        public KnotHash(int position, int skipSize, string input)
-        {
-            Position = position;
-            SkipSize = skipSize;
-            Input = ConvertInput(input);
-            InitKnots();
-        }
-        
-        public KnotHash(int position, int skipSize)
-        {
-            Position = position;
-            SkipSize = skipSize;
-            Input = "";
-            InitKnots();
-        }
-
-        public KnotHash(string input, bool convertInput)
+        public KnotHash(int formatBase = 16)
         {
             Position = 0;
             SkipSize = 0;
-            Input = convertInput ? ConvertInput(input) : input;
+            Input = "";
+            Conversion = true;
+            FormatBase = formatBase;
+            InitKnots();
+        }
+
+        public KnotHash(string input, bool convertInput = true, int formatBase = 16)
+        {
+            Position = 0;
+            SkipSize = 0;
+            Conversion = convertInput;
+            Input = input;
+            FormatBase = formatBase;
             InitKnots();
         }
 
@@ -46,34 +45,63 @@ namespace AdventOfCode2017.util
             Knots.AddRange(Enumerable.Range(0, Length));
         }
 
-        private static string ConvertInput(string str)
+        private void ConvertInput(string str)
         {
-            return str.Aggregate("", (current, c) => current + ((int) c + ",")) + EndLengths;
+            ConvertedInput = Array.ConvertAll(
+                (str.Aggregate("", (current, c) => current + ((int) c + ","))
+                 + EndLengths).Split(","),
+                int.Parse);
         }
 
-        public void GenerateHash(string format)
+        private void GenerateHash()
         {
             var deepHash = "";
             for (var i = 0; i < (Length / HashLength); i++)
             {
-                var value = Knots[i*HashLength];
+                var value = Knots[i * HashLength];
                 for (var j = (i * HashLength) + 1; j < (i * HashLength + HashLength); j++)
                 {
                     value ^= Knots[j];
                 }
 
-                deepHash += value.ToString(format).ToLower();
+                var t = Convert.ToString(value, FormatBase);
+                
+                while (t.Length < Math.Ceiling(Math.Log(Length, FormatBase)))
+                {
+                    t = "0" + t;
+                }
+                deepHash += t;
             }
-
+            
             Hash = deepHash;
         }
 
 
-        public void RunHash()
+        public void RunHash(int times = 64)
         {
-            foreach (var length in Array.ConvertAll(Input.Split(","),int.Parse))
+            if (Conversion)
             {
-                if(length > Knots.Count) continue;
+                ConvertInput(Input);
+            }
+            else
+            {
+                ConvertedInput = Array.ConvertAll(Input.Split(","), int.Parse);
+            }
+
+            for (var i = 0; i < times; i++)
+            {
+                HashStep();
+            }
+
+            GenerateHash();
+            Reset();
+        }
+
+        private void HashStep()
+        {
+            foreach (var length in ConvertedInput)
+            {
+                if (length > Knots.Count) continue;
                 //Reverse
                 if (length != 1)
                 {
@@ -110,6 +138,13 @@ namespace AdventOfCode2017.util
                 //Increase
                 SkipSize++;
             }
+        }
+
+        private void Reset()
+        {
+            Position = 0;
+            SkipSize = 0;
+            InitKnots();
         }
     }
 }
