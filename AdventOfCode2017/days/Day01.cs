@@ -1,13 +1,11 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System.Linq;
 
 namespace AdventOfCode2017.days
 {
     internal class Day01 : Day
     {
-        public Day01(bool part1) : base(part1)
+        public Day01(string input, bool part1) : base(input, part1)
         {
-            Input = File.ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input01.txt");
         }
     
 

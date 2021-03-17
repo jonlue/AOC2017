@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode2017.days
@@ -13,10 +11,8 @@ namespace AdventOfCode2017.days
         private const char Exchange = 'x';
         private const char Partner = 'p';
         private char[] Programs { get; set; }
-        public Day16(bool part1) : base(part1)
+        public Day16(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input16.txt");
             DanceMoves = Input.Split(",");
             Programs = "abcdefghijklmnop".ToCharArray();
         }

@@ -1,5 +1,4 @@
-﻿using System.IO;
-using AdventOfCode2017.util;
+﻿using AdventOfCode2017.util;
 
 namespace AdventOfCode2017.days
 {
@@ -7,12 +6,8 @@ namespace AdventOfCode2017.days
     {
         private KnotHash KnotHash { get; set; }
 
-        public Day10(bool part1) : base(part1)
+        public Day10(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input10.txt")
-                .Replace("\r", "");
-
         }
 
         protected override string Solve1()

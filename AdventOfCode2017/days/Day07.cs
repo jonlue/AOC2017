@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using AdventOfCode2017.util;
 
@@ -10,11 +9,8 @@ namespace AdventOfCode2017.days
         private string[] Programs { get; }
         private Dictionary<string, int> NodesWeight { get; }
         private Dictionary<string, string> NodesChildren { get; }
-        public Day07(bool part1) : base(part1)
+        public Day07(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input07.txt")
-                .Replace("\r", "");
             Programs = Input.Split("\n");
             NodesWeight = new Dictionary<string, int>();
             NodesChildren = new Dictionary<string, string>();

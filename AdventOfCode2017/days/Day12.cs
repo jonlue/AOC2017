@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace AdventOfCode2017.days
@@ -9,11 +8,8 @@ namespace AdventOfCode2017.days
     {
         private HashSet<int>  UniquePrograms { get; set; }
         private Dictionary<int, int[]> Connections { get; set; }
-        public Day12(bool part1) : base(part1)
+        public Day12(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input12.txt")
-                .Replace("\r", "");
             UniquePrograms = new HashSet<int>();
             Connections = Input.Split("\n")
                 .Select(line => Array.ConvertAll(line.Replace(" ", "")

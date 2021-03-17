@@ -5,9 +5,10 @@
         private bool Part1 { get; set; }
         protected string Input;
 
-        protected Day(bool part1)
+        protected Day(string input, bool part1)
         {
-            this.Part1 = part1;
+            Input = input;
+            Part1 = part1;
         }
 
         public string Solve()

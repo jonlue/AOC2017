@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace AdventOfCode2017.days
@@ -11,11 +10,8 @@ namespace AdventOfCode2017.days
         private Dictionary<string, int> Registers { get; }
         private int MaxValueInRegister { get; set; }
 
-        public Day08(bool part1) : base(part1)
+        public Day08(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input08.txt")
-                .Replace("\r", "");
             Instructions = Input.Split("\n");
             Registers = new Dictionary<string, int>();
             MaxValueInRegister = int.MinValue;

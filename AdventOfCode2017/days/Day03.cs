@@ -1,15 +1,12 @@
 ﻿using System;
-using System.IO;
 
 namespace AdventOfCode2017.days
 {
     internal class Day03 : Day
     {
         private int Goal { get; set; }
-        public Day03(bool part1) : base(part1)
+        public Day03(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input03.txt");
             Goal = int.Parse(Input);
         }
 

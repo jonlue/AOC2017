@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 
 namespace AdventOfCode2017.days
 {
     internal class Day17 : Day
     {
         private int Value { get; }
-        public Day17(bool part1) : base(part1)
+        public Day17(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input17.txt");
             Value = int.Parse(Input);
         }
 

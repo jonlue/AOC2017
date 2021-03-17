@@ -1,16 +1,12 @@
 ﻿using System;
-using System.IO;
 
 namespace AdventOfCode2017.days
 {
     internal class Day05 : Day
     {
         private int[] JumpInstructions { get; set; }
-        public Day05(bool part1) : base(part1)
+        public Day05(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input05.txt")
-                .Replace("\r","");
             JumpInstructions = Array.ConvertAll(Input.Split("\n"), int.Parse);
         }
 

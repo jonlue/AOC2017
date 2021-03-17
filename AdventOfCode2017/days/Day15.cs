@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
 
@@ -16,11 +14,8 @@ namespace AdventOfCode2017.days
         private const long Mask = (1 << 16) - 1;
         private long GeneratorA { get; set; }
         private long GeneratorB { get; set; }
-        public Day15(bool part1) : base(part1)
+        public Day15(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input15.txt")
-                .Replace("\r", "");
             var generators = Input.Split("\n").Select(line => Convert.ToInt64(line.Split(" ").Last())).ToArray();
             GeneratorA = generators[0];
             GeneratorB = generators[1];
@@ -52,21 +47,6 @@ namespace AdventOfCode2017.days
             
             genA.Start();
             genB.Start();
-            
-            /*
-            //find  better dequeue?
-            do
-            {
-                while(!queueA.IsEmpty && !queueB.IsEmpty)
-                {
-                    long a;
-                    long b;
-                    queueA.TryDequeue(out a);
-                    queueB.TryDequeue(out b);
-                    pairs += (a & Mask) == (b & Mask) ? 1 : 0;
-                };
-            } while (genA.IsAlive || genB.IsAlive);
-            */
             
             genA.Join();
             genB.Join();

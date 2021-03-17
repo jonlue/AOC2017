@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace AdventOfCode2017.days
@@ -8,10 +7,8 @@ namespace AdventOfCode2017.days
     internal class Day06 : Day
     {
         private int[] MemoryBank { get; set; }
-        public Day06(bool part1) : base(part1)
+        public Day06(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input06.txt");
             MemoryBank = Array.ConvertAll(Input.Split("\t"), int.Parse);
         }
 

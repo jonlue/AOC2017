@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using AdventOfCode2017.util;
 
@@ -9,10 +8,8 @@ namespace AdventOfCode2017.days
     internal class Day13 : Day
     {
         private List<Firewall> Firewalls { get; set; }
-        public Day13(bool part1) : base(part1)
+        public Day13(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input13.txt");
             Firewalls = new List<Firewall>();
             CreateFirewalls();
         }

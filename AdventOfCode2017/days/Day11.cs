@@ -1,23 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
 
 namespace AdventOfCode2017.days
 {
     internal class Day11 : Day
     {
-        private const string NW = "nw";
-        private const string NE = "ne";
-        private const string SW = "sw";
-        private const string SE = "se";
+        private const string Nw = "nw";
+        private const string Ne = "ne";
+        private const string Sw = "sw";
+        private const string Se = "se";
         private const string No = "n";
         private const string So = "s";
-        public Day11(bool part1) : base(part1)
+        public Day11(string input, bool part1) : base(input, part1)
         {
-            Input = File
-                .ReadAllText("C:\\Users\\Jonas\\RiderProjects\\AOC2017\\AdventOfCode2017\\resources\\input11.txt");
         }
 
         protected override string Solve1()
@@ -45,10 +39,10 @@ namespace AdventOfCode2017.days
         {
             return dir switch
             {
-                (NW) => (-1, -1),
-                (NE) => (1, -1),
-                (SW) => (-1, 1),
-                (SE) => (1, 1),
+                (Nw) => (-1, -1),
+                (Ne) => (1, -1),
+                (Sw) => (-1, 1),
+                (Se) => (1, 1),
                 (No) => (0, -2),
                 (So) => (0, 2),
                 _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
