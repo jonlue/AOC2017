@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace AdventOfCode2017.util
 {
+    // Used for Day 10, 14
     public class KnotHash
     {
         private int Position { get; set; }

@@ -2,6 +2,8 @@
 
 namespace AdventOfCode2017.util
 {
+    
+    // Used for Day 7
     public class Node
     {
         

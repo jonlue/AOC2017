@@ -1,6 +1,7 @@
 ﻿namespace AdventOfCode2017.util
 {
     
+    // used for Day 13
     public class Firewall
     {
         private int Depth { get; }
