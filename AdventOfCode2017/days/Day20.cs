@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
 using AdventOfCode2017.util;
 
@@ -47,19 +46,17 @@ namespace AdventOfCode2017.days
         {
             for (var i = 0; i < 10000; i++)
             {
-                var positions = new Dictionary<Vector3, List<int>>();
+                var positions = new Dictionary<Vector3, List<int>>(1000);
                 var j = 0;
                 foreach (var particle in Particles)
                 {
                     particle.MakeStep();
-                    if (!positions.ContainsKey(particle.Position))
-                    {
-                        positions.Add(particle.Position,new List<int>(){j});
-                    }
-                    else
+
+                    if (!positions.TryAdd(particle.Position, new List<int>() {j}))
                     {
                         positions[particle.Position].Add(j);
                     }
+
                     j++;
                 }
 

@@ -3,6 +3,7 @@ using System.Numerics;
 
 namespace AdventOfCode2017.util
 {
+    // used for day 20
     public class Particle
     {
         public Vector3 Position { get; set; }
