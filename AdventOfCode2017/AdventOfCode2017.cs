@@ -64,7 +64,7 @@ namespace AdventOfCode2017
                 (19) => new Day19(input, part),
                 (20) => new Day20(input, part),
                 (21) => new Day21(input, part),
-                (22) => new Day22(input, part),/*
+                (22) => new Day22(input, part),
                 (23) => new Day23(input, part),/*
                 (24) => new Day24(input, part),/*
                 (25) => new Day25(input, part),

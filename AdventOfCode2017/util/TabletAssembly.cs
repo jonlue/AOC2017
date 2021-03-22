@@ -10,10 +10,13 @@ namespace AdventOfCode2017.util
         private const string Send = "snd";
         private const string Set = "set";
         private const string Add = "add";
+        private const string Subtract = "sub";
         private const string Multiply = "mul";
         private const string Modulo = "mod";
         private const string Recover = "rcv";
         private const string JumpGreaterZero = "jgz";
+        private const string JumpNotZero = "jnz";
+
         private Dictionary<string,long> Registers { get; }
         private string[] Instructions { get; }
         private ConcurrentQueue<long> QOut { get; }
@@ -22,11 +25,13 @@ namespace AdventOfCode2017.util
         public int MessagesSent { get; private set; }
         public bool WaitingForMessage { get; private set; }
         public bool ShutDown { get; set; }
+        public int MultCount { get; private set; }
 
         public TabletAssembly(string[] instructions, ConcurrentQueue<long> qOut, ConcurrentQueue<long> qIn, bool part1 = false)
         {
             Instructions = instructions;
             MessagesSent = 0;
+            MultCount = 0;
             WaitingForMessage = false;
             QOut = qOut;
             QIn = qIn;
@@ -41,6 +46,7 @@ namespace AdventOfCode2017.util
                 var parameters = Instructions[i].Split(" ");
                 var mode = parameters[0];
                 long value;
+                long num;
                 switch (mode)
                 {
                     case Send:
@@ -66,9 +72,14 @@ namespace AdventOfCode2017.util
                         }
                         break;
                     case JumpGreaterZero:
-                        var num = GetValue(parameters[1]);
+                        num = GetValue(parameters[1]);
                         value = GetValue(parameters[2]);
                         if (num > 0) i += (int) value - 1;
+                        break;
+                    case JumpNotZero:
+                        num = GetValue(parameters[1]);
+                        value = GetValue(parameters[2]);
+                        if (num != 0) i += (int) value - 1;
                         break;
                     default:
                         var reg = parameters[1];
@@ -79,22 +90,27 @@ namespace AdventOfCode2017.util
                         {
                             (Set) => value,
                             (Add) => Registers[reg] + value,
+                            (Subtract) => Registers[reg] - value,
                             (Multiply) => Registers[reg] * value,
                             (Modulo) => value != 0 ? Registers[reg] % value : Registers[reg],
                             _ => Registers[reg]
                         };
+                        if (mode == Multiply) {MultCount++;}
                         break;
                 }
                 
             }
-
-            Console.Out.WriteLine("stop");
             ShutDown = true;
         }
 
         public void SetRegister(string reg, int value)
         {
             Registers.Add(reg,value);
+        }
+        
+        public long GetRegister(string reg)
+        {
+            return Registers[reg];
         }
         
         private long GetValue(string parameter)
