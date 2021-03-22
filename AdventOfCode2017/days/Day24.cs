@@ -38,29 +38,44 @@ namespace AdventOfCode2017.days
             {
                 if (inPort == port || outPort == port)
                 {
-                    var copy = new List<(int, int)>();
-                    copy.AddRange(components);
-                    copy.Remove((inPort, outPort));
+                    var copy = GetCopyOfList(components, inPort, outPort);
                     var (newMax, newMaxSize) = FindStrongestBridge(sum + inPort + outPort
                         , inPort == port ? outPort : inPort, copy, size + 1, part2);
-                    if (part2)
-                    {
-                        if (newMaxSize > maxSize)
-                        {
-                            maxSize = newMaxSize;
-                            max = newMax;
-                            continue;
-                        }
-                        if (newMaxSize == maxSize) max = Math.Max(max, newMax);
-                    }
-                    else
-                    {
-                        Math.Max(max, newMaxSize);
-                    }
+
+                    var (newValue, newSize) = UpdateSizeAndValue(max,newMax, maxSize, newMaxSize, part2);
+                    maxSize = newSize;
+                    max = newValue;
                 }
             }
 
             return (max, maxSize);
+        }
+
+        private static (int,int) UpdateSizeAndValue(int value, int newValue, int size, int newSize, bool part2)
+        {
+            if (part2)
+            {
+                if (newSize > size)
+                {
+                    size = newSize;
+                    value = newValue;
+                }
+                if (newSize == size) value = Math.Max(value, newValue);
+            }
+            else
+            {
+                value = Math.Max(value, newValue);
+            }
+
+            return (value, size);
+        }
+
+        private static List<(int, int)> GetCopyOfList(List<(int, int)> components, int inPort, int outPort)
+        {
+            var copy = new List<(int, int)>();
+            copy.AddRange(components);
+            copy.Remove((inPort, outPort));
+            return copy;
         }
 
 
