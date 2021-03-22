@@ -1,4 +1,5 @@
-﻿using AdventOfCode2017.util;
+﻿using System;
+using AdventOfCode2017.util;
 
 namespace AdventOfCode2017.days
 {
@@ -18,6 +19,7 @@ namespace AdventOfCode2017.days
 
         protected override string Solve2()
         {
+            Console.WriteLine("Result may not be based on Input");
             var h = 0;
 
             var b = GetB();
