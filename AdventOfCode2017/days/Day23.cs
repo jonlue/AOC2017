@@ -19,48 +19,43 @@ namespace AdventOfCode2017.days
         protected override string Solve2()
         {
             var h = 0;
-            // start
-            var b = 106700;
-            var c = (b + 17000);
+
+            var b = GetB();
+            var c = b - GetC();
+            var step = -GetStep();
             
-            while (true)
-            {
-                var f = 1;
-                var d = 2;
-                int g;
-                do
+            while(b <= c){
+                for(var i = 2; i< b; i++)
                 {
-                    var e = 2;
-                    do
-                    {
-                        g = d * e - b;
-                        if (g == 0)
-                        {
-                            f = 0;
-                            e++;
-                        }
-
-                        g = e - b;
-                    } while (g != 0);
-
-                    d++;
-                    g = d - b;
-                } while (g != 0);
-
-                if (f == 0)
-                {
+                    if (b % i != 0) continue;
                     h++;
-                    g = b;
+                    break;
                 }
-
-                g -= c;
-                if (g == 0)
-                {
-                    return h.ToString();
-                }
-
-                b -= 17;
+                b += step;
             }
+
+            return h.ToString();
+        }
+
+        private int GetStep()
+        {
+            var ins = Input.Split("\n");
+            return int.Parse(ins[^2].Split(" ")[^1]);
+        }
+
+        private int GetC()
+        {
+            var ins = Input.Split("\n");
+            return int.Parse(ins[7].Split(" ")[^1]);
+        }
+
+        private int GetB()
+        {
+            var ins = Input.Split("\n");
+            var b = int.Parse(ins[0].Split(" ")[^1]);
+            b *= int.Parse(ins[4].Split(" ")[^1]);
+            b -= int.Parse(ins[5].Split(" ")[^1]);
+            return b;
         }
     }
 }
